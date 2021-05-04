@@ -1,0 +1,8 @@
+asgiref==3.3.4
+Django==3.0.2
+greenlet==1.0.0
+IMDbPY==2020.9.25
+lxml==4.6.3
+pytz==2021.1
+SQLAlchemy==1.4.7
+sqlparse==0.4.1

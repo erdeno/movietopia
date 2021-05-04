@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Movietopia{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'movietopia/css/bootstrap.min.css' %}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'movietopia/css/font-awesome.min.css' %}">
+        <link href="{% static 'movietopia/css/loginstyles.css' %}" rel="stylesheet">
+        <link rel="icon" href="{% static 'movietopia/logos/cinema.svg'%}">
+
+        {% block script %}
+        {% endblock %}
+    </head>
+    <body>
+
+
+
+
+      <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+       <a href="/"><img src="{% static 'movietopia/logos/logo.png'%}" height="50" alt="site-logo"></a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+
+       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+         <ul class="navbar-nav mr-auto">
+           <li class="nav-item"{% if request.endpoint == item.endpoint %} class='nav-item active' {% endif %}>
+             <a class="nav-link" href="/">Home</a>
+           </li>
+           <li {% if request.path == "/login" %} class='nav-item active' {% else %}  class="nav-item" {% endif %}>
+             <a class="nav-link" href="{% url 'login' %}">Login</a>
+           </li>
+           <li {% if request.path == "/register" %} class='nav-item active' {% else %}  class="nav-item" {% endif %}>
+             <a class="nav-link" href="{% url 'register' %}">Register</a>
+           </li>
+         </ul>
+       </div>
+     </nav>
+        <div class="body">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

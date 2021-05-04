@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Movietopia{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'movietopia/css/bootstrap.min.css' %}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{% static 'movietopia/css/styles.css' %}" rel="stylesheet">
+        <link rel="icon" href="{% static 'movietopia/logos/cinema.svg'%}">
+
+        {% block script %}
+        {% endblock %}
+    </head>
+    <body>
+      <ul class="topnav">
+        <li class="nav-item">
+          <a id="home" href="#home"><img src="{% static 'movietopia/logos/logo.png'%}" height="50" alt="site-logo"></a>
+        </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="add-movie">Add A Movie</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="send-dm">Send a DM</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="profile">{{user}}</a>
+          </li>
+          {% if user.is_superuser %}
+            <li class="nav-item">
+              <a class="nav-link" href="/admin">Admin</a>
+            </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+          </li>
+
+
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+          </li>
+        {% endif %}
+        <li style="float:right" class="mt-2">
+          <form id="search-form" class="form-inline my-1 my-lg-0">
+            <input id="search-input" class="form-control mr-sm-2 mr-lg-4" type="text" placeholder="Search" aria-label="Search">
+          </form>
+        </li>
+      </ul>
+      </ul>
+      <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+       <a href="/"><img src="{% static 'movietopia/logos/logo.png'%}" height="50" alt="site-logo"></a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+
+       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+         <ul class="navbar-nav mr-auto">
+           <li class="nav-item">
+             <a class="nav-link" id="home" href="#home">Home</a>
+           </li>
+           {% if user.is_authenticated %}
+             <li class="nav-item">
+               <a class="nav-link" href="#" id="add-movie">Add A Movie</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="#" id="send-dm">Send a DM</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="#" id="profile">{{user}}</a>
+             </li>
+             {% if user.is_superuser %}
+               <li class="nav-item">
+                 <a class="nav-link" href="/admin">Admin</a>
+               </li>
+             {% endif %}
+             <li class="nav-item">
+               <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+             </li>
+
+
+           {% else %}
+             <li class="nav-item">
+               <a class="nav-link" href="{% url 'login' %}">Login</a>
+             </li>
+           {% endif %}
+
+         </ul>
+         <form id="search-form" class="form-inline my-1 my-lg-0">
+           <input id="search-input" class="form-control mr-sm-2 mr-lg-4" type="text" placeholder="Search" aria-label="Search">
+         </form>
+       </div>
+     </nav> -->
+
+
+        <div class="body my-5">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

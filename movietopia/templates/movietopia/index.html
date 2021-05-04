@@ -1,0 +1,149 @@
+{% extends "movietopia/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<br>
+
+  <div class="container">
+
+    <div id="alert"></div>
+
+    <div id="home-view"><div id="movie-row" class="row"></div></div>
+    <div id="create-dm-view"></div>
+    <div id="movie-detail-view">
+      <button type="button" id="return-button" class="btn btn-secondary"><span aria-hidden="true">&laquo;</span> Return</button>
+      <div class="row my-5">
+          <div class="col-md-5">
+              <div class="project-info-box mt-0">
+                  <h3 id="movie-detail-title"></h3>
+                  <p id="movie-detail-plot" class="mb-4"></p>
+              </div><!-- / project-info-box -->
+
+              <div class="project-info-box">
+                <p id="movie-detail-rating"></p>
+                  <p id="movie-detail-year"></p>
+                  <p id="movie-detail-director"></p>
+                  <p id="movie-detail-writer"></p>
+                  <p id="movie-detail-genre" class="mb-0"></p>
+              </div><!-- / project-info-box -->
+
+              <div id="detail-lists" class="project-info-box mt-5 mb-0">
+
+              </div><!-- / project-info-box -->
+          </div><!-- / column -->
+
+          <div class="col-md-7">
+              <img id="movie-detail-img" src="" alt="project-image" height="400rem" class="rounded ml-5">
+          </div><!-- / column -->
+          <div id="buttons-row" class="my-4"></div>
+
+          <br>
+      </div>
+      <div class="row my-5">
+        <div id="movie-detail-comment">
+          <div id="comment-alert"></div>
+          <hr>
+          <h3>Comments: </h3>
+          <br>
+          <div class="row" id="comment-row">
+          </div>
+          <div id="make-comment-button"></div>
+          <div id="make-comment"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="profile-view">
+      <div class="container padding-bottom-3x mb-2">
+        <div class="row">
+            <div class="col-lg-4">
+                <aside class="user-info-wrapper">
+                    <div class="user-cover" style="background-image: url(https://bootdey.com/img/Content/bg1.jpg);">
+                    </div>
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <img id="profile-img" src="" alt="User"></div>
+                        <div class="user-data">
+                            <h4 id="user-name"></h4><span id="join-date"></span>
+                            <p id="profile-numbers" class="mt-3"></p>
+                            <div class="profile-userbuttons">
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                <nav class="list-group" id="profile-nav-items">
+
+                </nav>
+            </div>
+            <div class="col-lg-8">
+                <div class="padding-top-2x mt-2 hidden-lg-up"></div>
+                <!-- Wishlist Table-->
+                <div class="table-responsive wishlist-table margin-bottom-none">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th id="profile-heading"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="movies-list-body">
+                        </tbody>
+                    </table>
+                </div>
+                <hr class="mb-4">
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div id="new-movie" class="my-4">
+      <h3 id="new-movie-header">Add New Movie</h3>
+      <div class="d-flex justify-content-center m-5">
+        <div class="card m-5 p-4" style="width: 30rem;">
+          <form id="movie-form">
+            <div class="form-group">
+              <input class="form-control" type="text" placeholder="You can add a movie by typing its IMDb Id or Name..." readonly>
+            </div>
+            <div class="form-group">
+              <input autofocus class="form-control" id="movie_imdb_id" type="text" placeholder="IMDB Id">
+            </div>
+            <div class="form-group">
+              <input class="form-control" id="movie_title" type="text" placeholder="Title">
+            </div>
+            <div class="form-group">
+              <input class="form-control" id="movie_year" type="number" placeholder="Year">
+            </div>
+            <input class="btn btn-primary" type="submit" id="add-movie-submit" value="Search">
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <div id="imdb-query-view">
+      <h3>Results: </h3>
+      <div id="imdb-query-row" class="row">
+      </div>
+    </div>
+
+
+
+    <nav id="pagination" aria-label="Page navigation example">
+      <ul class="pagination justify-content-end">
+        <li id="previous-page" class="page-item disabled"><a class="page-link" onclick=changePage(false) href="#"><span aria-hidden="true">&laquo;</span></a></li>
+        <li class="page-item disabled"><a id="current-page" class="page-link" href="#">1</a></li>
+        <li id="next-page" class="page-item disabled"><a class="page-link" onclick=changePage() href="#"><span aria-hidden="true">&raquo;</span></a></li>
+      </ul>
+    </nav>
+
+
+  </div>
+<br>
+
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'movietopia/js/index.js' %}"></script>
+{% endblock %}
