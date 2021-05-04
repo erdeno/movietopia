@@ -3,25 +3,13 @@
 
 # Movietopia
 
+It is capstone project for Harvard Course: [CS50’s Web Programming with Python and JavaScript](https://cs50.harvard.edu/web/2020/)
+
 The personal movie database with +1000 movies. It is possible to add more movies to the database with movie names or imdb ids. You can track your watched movies and the movies you want to watch, also you can add the movies to your favorite list.
 
 
 ![Alt Text](/movietopia/static/movietopia/logos/movietopia.gif)
 
-
-
-## Why this project satisfies the distinctiveness and complexity requirements
-
-- In this project I create different concept from other projects in this course.
-- I had a movie list that I kept for my personal interest. I create movie model in this project and I create movie models from that list. The list has almost 1000 movies. 
-- Users can search movies in the database by search form in navbar.
-- I create 3 lists for each user so every user can put movies in their watchlist, watchedlist and favorites.
-- It is possible to add comments to movies.
-- I put User following and unfollowing functionality.
-- And every user can send private messages to their followers.
-- Then I create view with IMDbPY api, it is useful for retrieving data from [IMDb Website](https://www.imdb.com/) So every user can add new movie to database by typing just imdb ids or movie names.
-- All data retrieving at the backend like writers, synopsis, directors, year, title and link of movie poster.
-- With the all above functionalities I think my project fullfill the distinctiveness and complexity requirements.
 
 
 ## What's inside
